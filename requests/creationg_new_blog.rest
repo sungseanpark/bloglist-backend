@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Forget NFTs. GameStop Is Going About Business ‘the Old Fashion Way.’",
+    "author": "Emily Dattilo",
+    "url" : "https://www.barrons.com/articles/gamestop-stock-price-earnings-report-2be262a2",
+    "likes": 1
+}
