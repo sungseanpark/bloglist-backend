@@ -5,6 +5,7 @@ const app = require('../app')
 const api = supertest(app)
 
 const Blog = require('../models/blog')
+const blog = require('../models/blog')
 
 beforeEach(async () => {
     await Blog.deleteMany({})
@@ -41,6 +42,7 @@ test('a valid blog post can be added', async() => {
 
     await api
       .post('/api/blogs')
+      .send(newBlog)
       .expect(201)
       .expect('Content-Type', /application\/json/)
 
@@ -68,6 +70,29 @@ describe('deletion of a blog post', () => {
       expect(titles).not.toContain(blogToDelete.title)
     })
   })
+
+
+test('likes of a blog post can be updated with a put request', async() => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+    const originalLikes = blogToUpdate.likes
+
+    blogToUpdate.likes = originalLikes + 1
+
+    console.log(blogToUpdate.id)
+
+   const resultBlog = await api
+        .put(`/api/blogs/${blogToUpdate.id}`)
+        .send(blogToUpdate)
+        .expect(200)
+        .expect('Content-Type', /application\/json/)
+
+
+    expect(resultBlog.body.likes).toEqual(originalLikes+1)
+    
+
+
+})
 
 afterAll(async () => {
     await mongoose.connection.close()
