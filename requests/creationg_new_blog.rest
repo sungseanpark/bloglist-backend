@@ -1,5 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authroization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QyIiwiaWQiOiI2NWM5YTE1YzBhODU2MjZiMWMxODJkYjYiLCJpYXQiOjE3MDgzMTQ0Mjd9.nh83yV_X7-EVquQAV2T4WFp5nd3NtS8mifrLts2zc6A
 
 {
     "title": "Forget NFTs. GameStop Is Going About Business ‘the Old Fashion Way.’",
